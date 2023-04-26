@@ -1,3 +1,4 @@
 checks.json
 build
-*.swp
+*.swa
+a.out
