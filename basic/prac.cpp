@@ -264,6 +264,7 @@ int main(int argc, char *arg[]) {
 }
 #endif
 
+#if 0
 // enum variable
 int main(int argc, char *arg[]) {
 
@@ -281,6 +282,17 @@ int main(int argc, char *arg[]) {
   // state = 1;
 
   cout << "State machine state : " << state << endl;
+
+  return 0;
+}
+#endif
+
+int main(int argc, char *arg[]) {
+
+  char a = 'A';
+  char *ptr = &a;
+
+  cout << ptr << endl;
 
   return 0;
 }
