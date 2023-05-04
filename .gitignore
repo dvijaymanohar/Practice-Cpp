@@ -2,3 +2,4 @@ checks.json
 build
 *.swa
 a.out
+.DS_Store
