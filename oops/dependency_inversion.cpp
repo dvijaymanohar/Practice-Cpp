@@ -1,4 +1,7 @@
 // WeatherData.h
+#include <iostream>
+using namespace std;
+
 class WeatherData {
 public:
   virtual ~WeatherData() {}
