@@ -3,3 +3,4 @@ build
 *.swa
 a.out
 .DS_Store
+output
