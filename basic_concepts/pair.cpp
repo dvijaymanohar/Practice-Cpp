@@ -7,15 +7,20 @@ int main(int argc, char *argvp[]) {
   std::cout << "Name of the employee: " << employee.first << std::endl;
   std::cout << "Id of the employee: " << employee.second << std::endl;
 
+  std::pair<const char *, double> item = std::make_pair("Cucumber", 15.5);
+  std::cout << "Item's name: " << item.first << std::endl;
+  std::cout << "Item's price: " << item.second << std::endl;
 
-  pair<const char*, double> charDoub("str", 3.14);
-  pair<const char*, double> charDoub2 = make_pair("str", 3.14);
-  auto charDoub3 = make_pair("str", 3.14);
+  auto student1 = std::make_pair("Siddhartha", 2);
+  auto student2 = std::make_pair("Aaradhya", 6);
 
-  cout << charDoub.first << ", " << charDoub.second << "\n";    // str, 3.14
-  charDoub.first = "Str";
-  get<1>(charDoub) = 4.14;
-  cout << charDoub.first << ", " << charDoub.second << "\n";    // Str, 4.14
+  std::cout << "Name of the student1: " << student1.first << std::endl;
+  std::cout << "Group : " << student1.second << std::endl;
+
+  std::cout << "Name of the student 2: " << student2.first << std::endl;
+  std::cout << "Group : " << student2.second << std::endl;
+
+  std::cout << "Size of student: " << sizeof(student1) << std::endl;
 
   return 0;
 }

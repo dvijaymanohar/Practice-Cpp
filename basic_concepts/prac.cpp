@@ -287,6 +287,7 @@ int main(int argc, char *arg[]) {
 }
 #endif
 
+#if 0
 int main(int argc, char *arg[]) {
 
   char a = 'A';
@@ -296,3 +297,35 @@ int main(int argc, char *arg[]) {
 
   return 0;
 }
+#endif
+
+#if 0
+#include <iostream>
+
+using namespace std;
+
+auto add(unsigned int a, unsigned int b) -> unsigned int {
+  return a + b;
+}
+
+auto main(int argc, char *argv[]) -> int {
+  cout << "Hello World!" << endl;
+}
+#endif
+
+#if 0
+#include <iostream>
+#include <typeinfo>
+
+using namespace std;
+
+auto main(int argc, char *argv[]) -> int {
+
+  auto x = 1 + 1.23;
+
+  cout << "Type of x: " << typeid(x).name() << endl;
+  cout << " x: " << x << endl;
+
+  return 0;
+}
+#endif
