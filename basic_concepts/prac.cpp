@@ -329,3 +329,267 @@ auto main(int argc, char *argv[]) -> int {
   return 0;
 }
 #endif
+
+/*
+#include <functional>
+#include <iostream>
+
+
+auto get_string() -> string {
+  return "Hello";
+}
+
+template<typename T, typename U>
+auto simple_plus(T lhs, U rhs) -> decltype(lhs + rhs)
+{
+    return lhs + rhs;
+}
+
+template<typename T>
+auto abs()
+
+auto main(int argc, char *argv[]) -> int {
+  std::cout << "Addition of nums : " << std::plus<int>{}(1, 23) << std::endl;
+  std::cout << "Addition of nums : " << std::plus<>{}(1, 2.3) << std::endl;
+
+  std::cout << "Get string : " << get_string() << std::endl;
+  std::cout << "Plus: " << simple_plus(5, 6.5) << std::endl;
+}
+*/
+
+/*
+#include <iostream>
+#include <utility>
+#include <vector>
+
+
+using namespace std;
+
+auto main(int argc, char *argv[]) -> int {
+  std::vector<int> vec_orig = {45, 67, 34, 67, 34, 68, 34};
+  std::vector<int> vec_moved;
+
+  vec_moved = std::move(vec_orig);
+
+  cout << "Moved object " << std::endl;
+  for (auto it = vec_moved.begin(); it != vec_moved.end(); ++it)
+    cout << *it << '\t';
+
+  cout << '\n';
+
+  cout << "Original object " << std::endl;
+  for (auto it = vec_orig.begin(); it != vec_orig.end(); ++it)
+    cout << *it << '\t';
+
+  cout << '\n';
+}
+
+*/
+
+/*
+#include <iostream>
+
+using namespace std;
+
+auto main() -> int {
+  auto String = "Vijaya Manohar";
+
+  cout << "Variable type: " << typeid(String).name() << '\n';
+  cout << String << std::endl;
+}
+*/
+
+/*
+#include <iostream>
+using namespace std;
+
+auto main() -> int {
+  int num = 5;
+  float *array = new float[num];
+
+  if (array == nullptr) {
+    cout << "Error in allocating memory" << std::endl;
+    return -1;
+  }
+
+  for (int i = 0; i < num; i++) {
+    array[i] = i;
+  }
+
+  for (int i = 0; i < num; i++)
+    cout << array[i] << "\t";
+
+  cout << endl;
+
+  delete[] array;
+  array = nullptr;
+
+  return 0;
+}
+*/
+
+/*
+#include <iostream>
+
+using namespace std;
+
+auto main(int argc, char **argv) -> int {
+
+  string name = "Vijaya Manohar";
+
+  cout << "Enter your name here: ";
+  getline(cin, name);
+
+  cout << "Name: " << name << endl;
+
+  return 0;
+}
+*/
+
+/*
+#include <iostream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+void print_string(const string &str) { cout << str; }
+
+auto main(int argc, char **argv) -> int {
+  string name = "Vijaya Manohar Dogiparthi";
+  stringstream stream(name);
+
+  string temp;
+
+  while (stream >> temp) {
+    print_string(temp);
+    cout << " ";
+  }
+
+  cout << endl;
+}
+
+*/
+
+#if 0
+// string object to c string and vise-versa
+
+#include <iostream>
+
+using namespace std;
+
+auto main(int argc, char **argv) -> int {
+  string name = "Vijaya Manohar Dogiparthi";
+  unsigned char i = 0;
+  char *temp = &name[i];
+
+  while (temp != NULL && i < 3) {
+    printf("%s\n", temp);
+    i += 1;
+    temp = &name[i];
+
+    name += " ";
+    name += *temp;
+  }
+
+  cout << "Manipulated name: " << name << endl;
+
+  return 0;
+}
+
+#endif
+
+
+#if 0
+// String functions
+
+#include <iostream>
+#include <string>
+#include <functional>
+#include <typeinfo>
+
+using namespace std;
+
+// Function to demo erase
+auto eraseDemo(string &str)
+{
+    // Deletes all characters between 0th index and
+    // str.end() - 6
+    str.erase(str.begin() + 0, str.end() - 6);
+
+    return str;
+}
+
+auto main(int argc, char *argv[]) -> int {
+  string first_name;
+
+  cout << "Enter your name here: " << endl;
+  getline(cin, first_name);
+
+  for (auto iterator = first_name.begin(); iterator != first_name.end(); ++iterator)
+    cout << *iterator << " ";
+
+  cout << endl;
+
+  cout << "Left over string: " << eraseDemo(first_name) << endl;
+
+  cout << "Capacity of the string: " << first_name.capacity() << endl;
+
+  first_name.resize(300);
+
+  cout << "Capacity of the string: " << first_name.capacity() << endl;
+
+  first_name += " Manohar Dogiparthi";
+
+  first_name.shrink_to_fit();
+
+  cout << "Capacity of the string: " << first_name.capacity() << endl;
+
+
+  first_name = "Vijaya Manohar Dogiparthi";
+
+  cout << "Substring: " << first_name.substr(7, 7) << endl;
+
+  return 0;
+}
+
+#endif
+
+
+#include <iostream>
+#include <memory>
+using namespace std;
+
+struct temp {
+  int num;
+
+  temp(int num) : num(num) {
+    cout << "Temp initalised with: " << num << endl;
+  }
+
+  temp() = default;
+
+  void display(void) {
+    cout << "Num: " << num << endl;
+  }
+};
+
+auto main(int argc, char** argv) -> int {
+
+  auto t1 = new temp(25);
+
+  t1->display();
+
+  delete t1;
+
+  auto t2 = new temp[5];
+
+  if (!t2) {
+    cout << "Error: allocating memory" << endl;
+    exit(EXIT_FAILURE);
+  }
+
+  delete [] t2;
+
+  return 0;
+}
