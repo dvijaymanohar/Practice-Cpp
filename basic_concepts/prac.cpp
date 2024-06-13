@@ -499,14 +499,14 @@ auto main(int argc, char **argv) -> int {
 
 #endif
 
-
 #if 0
 // String functions
 
+#include <functional>
 #include <iostream>
 #include <string>
-#include <functional>
 #include <typeinfo>
+
 
 using namespace std;
 
@@ -552,10 +552,9 @@ auto main(int argc, char *argv[]) -> int {
 
   return 0;
 }
-
 #endif
 
-
+#if 0
 #include <iostream>
 #include <memory>
 using namespace std;
@@ -590,6 +589,137 @@ auto main(int argc, char** argv) -> int {
   }
 
   delete [] t2;
+
+  return 0;
+}
+#endif
+
+#if 0
+// Range based loops
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void generate_triangle() {
+
+std::vector<int> data{5};
+  for (auto number : data) {
+    cout << number << " ";
+  }
+
+  std::cout << endl;
+}
+
+auto main(int argc, char *argv[]) -> int {
+  generate_triangle();
+
+  return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+using namespace std;
+
+class Point {
+private:
+  int x, y;
+  Point(Point &pt) : x(pt.x), y(pt.y) {}
+
+public:
+  Point() = default;
+  Point(int x, int y) : x(x), y(y) {}
+
+  friend void displayPoint(Point &pt);
+};
+
+void displayPoint(Point &pt) {
+  cout << "Point coordinates: " << pt.x << " " << pt.y << endl;
+}
+
+auto main(int argc, char *argv[]) -> int {
+  Point p1(1, 2);
+  Point p2(p1);
+
+  displayPoint(p2);
+
+  return 0;
+}
+#endif
+
+#if 0
+// Class destructor and union
+
+#include <iostream>
+using namespace std;
+
+class Vector {
+private:
+  int *x;
+  size_t length;
+
+public:
+  Vector() = default;
+  Vector(const size_t len) : length(len) {
+    x = new int[len];
+
+    if (!x) {
+      cout << "X could not allocated" << endl;
+    }
+  }
+
+  ~Vector() {
+    delete[] x;
+    x = NULL;
+    cout << "Explicitly calling the destructor" << endl;
+  }
+};
+
+union xyz {
+  int a;
+  Vector vec;
+};
+
+auto main(int argc, char *argv[]) -> int {
+
+  Vector vec(20);
+  vec.~Vector();
+
+  cout << "programming ending" << endl;
+
+  return 0;
+}
+#endif
+
+// Deleting the dynamic object using its reference
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Dynamic {
+  char *name;
+
+  ~Dynamic() {
+    cout << "destructor called" << endl;
+    delete[] name;
+  }
+
+public:
+  Dynamic(string &first_name) {
+    name = new char[first_name.size() + 1];
+    strcpy_s(name, first_name.size(), first_name.c_str());
+    puts(name);
+    cout << "Name: " << first_name << endl;
+  }
+
+  void display_name() const { cout << "Name: " << name << endl; }
+};
+
+auto main(int argc, char *arg[]) -> int {
+  string name = "Vijaya Manohar Dogiparthi";
+  Dynamic *obj = new Dynamic(name);
+
+  obj->display_name();
 
   return 0;
 }
